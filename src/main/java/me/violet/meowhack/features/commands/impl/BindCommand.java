@@ -1,7 +1,7 @@
 package me.violet.meowhack.features.commands.impl;
 
 import com.google.common.eventbus.Subscribe;
-import me.alpha432.oyvey.OyVey;
+import me.violet.meowhack.Meowhack;
 import me.violet.meowhack.event.impl.KeyEvent;
 import me.violet.meowhack.features.commands.Command;
 import me.violet.meowhack.features.modules.Module;
@@ -27,7 +27,7 @@ public class BindCommand
             return;
         }
         String moduleName = commands[0];
-        Module module = OyVey.moduleManager.getModuleByName(moduleName);
+        Module module = Meowhack.moduleManager.getModuleByName(moduleName);
         if (module == null) {
             sendMessage("Unknown module '" + module + "'!");
             return;
