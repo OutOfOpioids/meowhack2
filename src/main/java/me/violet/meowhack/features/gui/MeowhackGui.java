@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class MeowhackGui extends Screen {
-    private static MeowhackGui oyveyGui;
+    private static MeowhackGui meowhackGui;
     private static MeowhackGui INSTANCE;
 
     static {
@@ -24,7 +24,7 @@ public class MeowhackGui extends Screen {
     private final ArrayList<Component> components = new ArrayList();
 
     public MeowhackGui() {
-        super(Text.literal("OyVey"));
+        super(Text.literal("Meowhack"));
         setInstance();
         load();
     }
@@ -66,8 +66,7 @@ public class MeowhackGui extends Screen {
     public void updateModule(Module module) {
         for (Component component : this.components) {
             for (Item item : component.getItems()) {
-                if (!(item instanceof ModuleButton)) continue;
-                ModuleButton button = (ModuleButton) item;
+                if (!(item instanceof ModuleButton button)) continue;
                 Module mod = button.getModule();
                 if (module == null || !module.equals(mod)) continue;
                 button.initSettings();
@@ -75,23 +74,27 @@ public class MeowhackGui extends Screen {
         }
     }
 
-    @Override public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+    @Override
+    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         Item.context = context;
         context.fill(0, 0, context.getScaledWindowWidth(), context.getScaledWindowHeight(), new Color(0, 0, 0, 120).hashCode());
         this.components.forEach(components -> components.drawScreen(context, mouseX, mouseY, delta));
     }
 
-    @Override public boolean mouseClicked(double mouseX, double mouseY, int clickedButton) {
+    @Override
+    public boolean mouseClicked(double mouseX, double mouseY, int clickedButton) {
         this.components.forEach(components -> components.mouseClicked((int) mouseX, (int) mouseY, clickedButton));
         return super.mouseClicked(mouseX, mouseY, clickedButton);
     }
 
-    @Override public boolean mouseReleased(double mouseX, double mouseY, int releaseButton) {
+    @Override
+    public boolean mouseReleased(double mouseX, double mouseY, int releaseButton) {
         this.components.forEach(components -> components.mouseReleased((int) mouseX, (int) mouseY, releaseButton));
         return super.mouseReleased(mouseX, mouseY, releaseButton);
     }
 
-    @Override public boolean mouseScrolled(double mouseX, double mouseY, double horizontalAmount, double verticalAmount) {
+    @Override
+    public boolean mouseScrolled(double mouseX, double mouseY, double horizontalAmount, double verticalAmount) {
         if (verticalAmount < 0) {
             this.components.forEach(component -> component.setY(component.getY() - 10));
         } else if (verticalAmount > 0) {
@@ -100,17 +103,20 @@ public class MeowhackGui extends Screen {
         return super.mouseScrolled(mouseX, mouseY, horizontalAmount, verticalAmount);
     }
 
-    @Override public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+    @Override
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
         this.components.forEach(component -> component.onKeyPressed(keyCode));
         return super.keyPressed(keyCode, scanCode, modifiers);
     }
 
-    @Override public boolean charTyped(char chr, int modifiers) {
+    @Override
+    public boolean charTyped(char chr, int modifiers) {
         this.components.forEach(component -> component.onKeyTyped(chr, modifiers));
         return super.charTyped(chr, modifiers);
     }
 
-    @Override public boolean shouldPause() {
+    @Override
+    public boolean shouldPause() {
         return false;
     }
 

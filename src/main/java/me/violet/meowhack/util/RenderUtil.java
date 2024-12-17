@@ -167,7 +167,7 @@ public class RenderUtil implements Util {
         float maxZ = (float) (box.maxZ - mc.getEntityRenderDispatcher().camera.getPos().getZ());
 
         setup3D();
-        RenderSystem.lineWidth(( float ) lineWidth);
+        RenderSystem.lineWidth((float) lineWidth);
         RenderSystem.setShader(GameRenderer::getRenderTypeLinesProgram);
 
         RenderSystem.defaultBlendFunc();

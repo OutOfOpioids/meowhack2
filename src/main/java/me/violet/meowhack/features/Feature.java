@@ -49,9 +49,6 @@ public class Feature
     public <T> Setting<T> register(Setting<T> setting) {
         setting.setFeature(this);
         this.settings.add(setting);
-//        if (this instanceof Module && Feature.mc.currentScreen instanceof OyVeyGui) {
-//            OyVeyGui.getInstance().updateModule((Module) this);
-//        }
         return setting;
     }
 
@@ -64,9 +61,6 @@ public class Feature
         if (!removeList.isEmpty()) {
             this.settings.removeAll(removeList);
         }
-//        if (this instanceof Module && Feature.mc.currentScreen instanceof OyVeyGui) {
-//            OyVeyGui.getInstance().updateModule((Module) this);
-//        }
     }
 
     public Setting<?> getSettingByName(String name) {

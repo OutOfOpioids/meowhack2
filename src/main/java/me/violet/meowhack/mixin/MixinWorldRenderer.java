@@ -1,4 +1,5 @@
 package me.violet.meowhack.mixin;
+
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.systems.RenderSystem;
 import me.violet.meowhack.event.impl.Render3DEvent;
@@ -16,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import static me.violet.meowhack.util.traits.Util.EVENT_BUS;
 import static me.violet.meowhack.util.traits.Util.mc;
 
-@Mixin( WorldRenderer.class )
+@Mixin(WorldRenderer.class)
 public class MixinWorldRenderer {
     @Inject(method = "render", at = @At("RETURN"))
     private void render(RenderTickCounter tickCounter, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer,
@@ -26,7 +27,7 @@ public class MixinWorldRenderer {
         stack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(mc.gameRenderer.getCamera().getPitch()));
         stack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(mc.gameRenderer.getCamera().getYaw() + 180f));
 
-        MinecraftClient.getInstance().getProfiler().push("oyvey-render-3d");
+        MinecraftClient.getInstance().getProfiler().push("meowhack-render-3d");
         RenderSystem.clear(GL11.GL_DEPTH_BUFFER_BIT, MinecraftClient.IS_SYSTEM_MAC);
 
         Render3DEvent event = new Render3DEvent(stack, tickCounter.getTickDelta(true));

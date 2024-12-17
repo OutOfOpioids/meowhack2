@@ -1,4 +1,5 @@
 package me.violet.meowhack.manager;
+
 import me.violet.meowhack.features.Feature;
 import net.minecraft.entity.player.PlayerEntity;
 

@@ -58,7 +58,8 @@ public class StringButton
         }
     }
 
-    @Override public void onKeyPressed(int key) {
+    @Override
+    public void onKeyPressed(int key) {
         if (isListening) {
             switch (key) {
                 case 1: {

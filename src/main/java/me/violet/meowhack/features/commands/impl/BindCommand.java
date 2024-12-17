@@ -1,5 +1,6 @@
 package me.violet.meowhack.features.commands.impl;
 
+
 import com.google.common.eventbus.Subscribe;
 import me.violet.meowhack.Meowhack;
 import me.violet.meowhack.event.impl.KeyEvent;
@@ -38,7 +39,8 @@ public class BindCommand
         this.module = module;
     }
 
-    @Subscribe private void onKey(KeyEvent event) {
+    @Subscribe
+    private void onKey(KeyEvent event) {
         if (nullCheck() || !listening) return;
         listening = false;
         if (event.getKey() == GLFW.GLFW_KEY_ESCAPE) {

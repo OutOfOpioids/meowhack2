@@ -7,7 +7,7 @@ import me.violet.meowhack.features.settings.Setting;
 public class ClientEvent extends Event {
     private Feature feature;
     private Setting<?> setting;
-    private int stage;
+    private final int stage;
 
     public ClientEvent(int stage, Feature feature) {
         this.stage = stage;

@@ -24,17 +24,11 @@ public class EventManager extends Feature {
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
-        mc.getWindow().setTitle("OyVey 0.0.3");
+        mc.getWindow().setTitle("Meowhack");
         if (!fullNullCheck()) {
-//            OyVey.inventoryManager.update();
             Meowhack.moduleManager.onUpdate();
             Meowhack.moduleManager.sortModules(true);
             onTick();
-//            if ((HUD.getInstance()).renderingMode.getValue() == HUD.RenderingMode.Length) {
-//                OyVey.moduleManager.sortModules(true);
-//            } else {
-//                OyVey.moduleManager.sortModulesABC();
-//            }
         }
     }
 
@@ -46,7 +40,6 @@ public class EventManager extends Feature {
             if (player == null || player.getHealth() > 0.0F)
                 continue;
             EVENT_BUS.post(new DeathEvent(player));
-//            PopCounter.getInstance().onDeath(player);
         }
     }
 
@@ -77,15 +70,18 @@ public class EventManager extends Feature {
         Meowhack.moduleManager.onRender3D(event);
     }
 
-    @Subscribe public void onRenderGameOverlayEvent(Render2DEvent event) {
+    @Subscribe
+    public void onRenderGameOverlayEvent(Render2DEvent event) {
         Meowhack.moduleManager.onRender2D(event);
     }
 
-    @Subscribe public void onKeyInput(KeyEvent event) {
+    @Subscribe
+    public void onKeyInput(KeyEvent event) {
         Meowhack.moduleManager.onKeyPressed(event.getKey());
     }
 
-    @Subscribe public void onChatSent(ChatEvent event) {
+    @Subscribe
+    public void onChatSent(ChatEvent event) {
         if (event.getMessage().startsWith(Command.getCommandPrefix())) {
             event.cancel();
             try {

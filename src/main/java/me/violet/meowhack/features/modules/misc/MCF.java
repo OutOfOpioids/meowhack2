@@ -10,11 +10,13 @@ import org.lwjgl.glfw.GLFW;
 
 public class MCF extends Module {
     private boolean pressed;
+
     public MCF() {
         super("MCF", "", Category.MISC, true, false, false);
     }
 
-    @Override public void onTick() {
+    @Override
+    public void onTick() {
         if (GLFW.glfwGetMouseButton(mc.getWindow().getHandle(), 2) == 1) {
             if (!pressed) {
                 Entity targetedEntity = mc.targetedEntity;

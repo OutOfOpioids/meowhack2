@@ -12,7 +12,7 @@
   },
   "license": "MIT",
   "environment": "client",
-  "accessWidener": "oyvey.accesswidener",
+  "accessWidener": "meowhack.accesswidener",
   "entrypoints": {
     "client": [
       "me.violet.meowhack.Meowhack"

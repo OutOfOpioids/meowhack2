@@ -97,7 +97,8 @@ public class ModuleButton
         }
     }
 
-    @Override public void onKeyPressed(int key) {
+    @Override
+    public void onKeyPressed(int key) {
         super.onKeyPressed(key);
         if (!this.items.isEmpty() && this.subOpen) {
             for (Item item : this.items) {

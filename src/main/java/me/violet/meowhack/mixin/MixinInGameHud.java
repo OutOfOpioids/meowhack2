@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import static me.violet.meowhack.util.traits.Util.EVENT_BUS;
 
-@Mixin( InGameHud.class )
+@Mixin(InGameHud.class)
 public class MixinInGameHud {
 
     @Inject(method = "render", at = @At("RETURN"))
